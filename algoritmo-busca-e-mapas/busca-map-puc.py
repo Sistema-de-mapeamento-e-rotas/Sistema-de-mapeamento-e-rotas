@@ -115,7 +115,7 @@ def desenha_caminho(mapa, caminho):
         print(linha)
 
 
-mapa, start, end = read_file('maze2.txt')
+mapa, start, end = read_file('algoritmo-busca-e-mapas/maze2.txt')
 
 
 caminho = salva_caminho(mapa, start, end)
