@@ -5,7 +5,7 @@ import { BarraLateral } from "./barra-lateral/barra-lateral";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Centro, Cabecalho, BarraLateral],
+  imports: [Centro, Cabecalho, BarraLateral],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
