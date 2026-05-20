@@ -1,0 +1,194 @@
+// ─── Tokens (mesma paleta do header) ─────────────────────────────
+$color-bg: #0a0a1a;
+$color-surface: #11113a;
+$color-surface-2: #13133f;
+$color-border: #1a1a5e;
+$color-primary: #4646ff;
+$color-light: #7b7bff;
+$color-muted: #c2c2ff;
+$color-accent: #ffff46;
+$color-text: #e8e8ff;
+
+$font-brand: 'Space Mono', monospace;
+$font-ui: 'DM Sans', sans-serif;
+
+$radius-md: 12px;
+$radius-sm: 6px;
+$transition: 0.2s ease;
+
+// ─── Sidebar wrapper (aplique no elemento pai das sections) ───────
+// Ex: <aside class="sidebar"> ou <nav class="sidebar">
+.sidebar,
+[id="sidebar"] {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    background: $color-bg;
+    border-right: 1px solid $color-border;
+    overflow: hidden;
+    font-family: $font-ui;
+    color: $color-text;
+    align-items: center;
+    padding: 0;
+}
+
+.sidebar>.secao-info,
+.sidebar>.secao-passos,
+[id="sidebar"]>.secao-info,
+[id="sidebar"]>.secao-passos {
+    flex: 1;
+    min-height: 0;
+    width: min(100%, 320px);
+    box-sizing: border-box;
+    padding: 28px 24px;
+    border-bottom: 1px solid $color-border;
+    margin: 0 auto;
+}
+
+.sidebar>.secao-passos,
+[id="sidebar"]>.secao-passos {
+    border-bottom: none;
+}
+
+h2 {
+    font-family: $font-brand;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-light;
+    margin: 0 0 16px 0;
+
+    // Linha decorativa ao lado do título
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 3px;
+        height: 14px;
+        background: $color-primary;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+}
+
+// ─── Seção: Sobre o estabelecimento ──────────────────────────────
+.secao-info {
+    p {
+        margin: 0 0 10px 0;
+        font-size: 0.875rem;
+        line-height: 1.65;
+        color: $color-muted;
+
+        // Primeira <p>: funciona como subtítulo / tagline
+        &:first-of-type {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: $color-text;
+            margin-bottom: 12px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ─── Seção: Instruções de rota ────────────────────────────────────
+.secao-passos {
+    ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        counter-reset: passo;
+    }
+
+    li {
+        counter-increment: passo;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: $radius-sm;
+        font-size: 0.875rem;
+        color: $color-muted;
+        background: transparent;
+        border: 1px solid transparent;
+        cursor: default;
+        transition:
+            background $transition,
+            border-color $transition,
+            color $transition;
+
+        // Número do passo
+        &::before {
+            content: counter(passo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            background: $color-border;
+            color: $color-light;
+            font-family: $font-brand;
+            font-size: 0.65rem;
+            font-weight: 700;
+            line-height: 1;
+            transition:
+                background $transition,
+                color $transition;
+        }
+
+        &:hover {
+            background: $color-surface-2;
+            border-color: $color-border;
+            color: $color-text;
+
+            &::before {
+                background: $color-primary;
+                color: #fff;
+            }
+        }
+
+        // Último passo: accent
+        &:last-child {
+            &::before {
+                background: rgba($color-accent, 0.15);
+                color: $color-accent;
+            }
+
+            &:hover::before {
+                background: $color-accent;
+                color: $color-bg;
+            }
+        }
+    }
+}
+
+// ─── Responsivo ───────────────────────────────────────────────────
+@media (max-width: 768px) {
+
+    .sidebar,
+    [id="sidebar"] {
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-top: 1px solid $color-border;
+    }
+
+    .secao-info,
+    .secao-passos {
+        padding: 20px 16px;
+    }
+}

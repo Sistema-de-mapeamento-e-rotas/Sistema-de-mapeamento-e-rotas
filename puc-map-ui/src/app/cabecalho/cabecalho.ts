@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './cabecalho.html',
   styleUrl: './cabecalho.scss',
 })
-export class Cabecalho {}
+export class Cabecalho {
+  pesquisar(event: Event, origemInput: HTMLInputElement, destinoInput: HTMLInputElement) {
+    event.preventDefault();
+    console.log('Pesquisar:', origemInput.value, destinoInput.value);
+  }
+}

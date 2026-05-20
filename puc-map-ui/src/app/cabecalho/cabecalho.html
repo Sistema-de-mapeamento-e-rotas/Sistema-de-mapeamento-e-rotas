@@ -1,1 +1,17 @@
-<p>cabecalho works!</p>
+<header>
+  <div>Logo</div>
+
+  <form class="search-form" (submit)="pesquisar($event, origemInput, destinoInput)">
+    <label class="busca">
+      <input #origemInput type="text" placeholder="Local de início" aria-label="Local de início" />
+    </label>
+
+    <label class="busca">
+      <input #destinoInput type="text" placeholder="Local de destino" aria-label="Local de destino" />
+    </label>
+
+    <button class="btn-pesquisar" type="submit">Pesquisar</button>
+  </form>
+
+  <div>logo-engrenagem</div>
+</header>
