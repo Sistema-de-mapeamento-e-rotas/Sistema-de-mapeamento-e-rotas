@@ -6,11 +6,12 @@
 
 .painel {
     width: min(1600px, calc(100vw - 280px));
-    height: min(85vh, 1000px);
+    height: min(82vh, 1000px);
     max-width: 100%;
     max-height: 100%;
     border: 1px solid black;
     box-sizing: border-box;
+    margin-top: 2px;
 
     display: flex;
     justify-content: center;

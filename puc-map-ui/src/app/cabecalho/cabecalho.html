@@ -3,14 +3,34 @@
 
   <form class="search-form" (submit)="pesquisar($event, origemInput, destinoInput)">
     <label class="busca">
-      <input #origemInput type="text" placeholder="Local de início" aria-label="Local de início" />
+      <input #origemInput type="text" placeholder="Local de início" aria-label="Local de início"
+        (input)="onInput($event, 'origem')" (focus)="onInput($event, 'origem')" />
+
+      <div class="suggestions" *ngIf="campoAtivo === 'origem' && sugestoesOrigem.length > 0">
+        <button type="button" class="suggestion-item" *ngFor="let local of sugestoesOrigem"
+          (mousedown)="selecionarSugestao(local.nome, 'origem', origemInput)">
+          <span class="suggestion-name">{{ local.nome }}</span>
+          <span class="suggestion-type">{{ local.tipo }}</span>
+        </button>
+      </div>
     </label>
 
     <label class="busca">
-      <input #destinoInput type="text" placeholder="Local de destino" aria-label="Local de destino" />
+      <input #destinoInput type="text" placeholder="Local de destino" aria-label="Local de destino"
+        (input)="onInput($event, 'destino')" (focus)="onInput($event, 'destino')" />
+
+      <div class="suggestions" *ngIf="campoAtivo === 'destino' && sugestoesDestino.length > 0">
+        <button type="button" class="suggestion-item" *ngFor="let local of sugestoesDestino"
+          (mousedown)="selecionarSugestao(local.nome, 'destino', destinoInput)">
+          <span class="suggestion-name">{{ local.nome }}</span>
+          <span class="suggestion-type">{{ local.tipo }}</span>
+        </button>
+      </div>
     </label>
 
     <button class="btn-pesquisar" type="submit">Pesquisar</button>
+    <button class="btn-limpar" type="button" (click)="limparBusca(origemInput, destinoInput)"
+      aria-label="Limpar busca">✕</button>
   </form>
 
   <div>logo-engrenagem</div>

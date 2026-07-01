@@ -6,8 +6,41 @@
     min-height: 0;
 }
 
+.mapa-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 svg {
     width: 100%;
     height: 100%;
     display: block;
+}
+
+.map-overlay-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.map-legend {
+    position: absolute;
+    left: 16px;
+    bottom: -3px;
+    padding: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 2;
+}
+
+.legenda-img {
+    max-height: 215px;
+    max-width: min(340px, 55vw);
+    object-fit: contain;
+    width: auto;
 }

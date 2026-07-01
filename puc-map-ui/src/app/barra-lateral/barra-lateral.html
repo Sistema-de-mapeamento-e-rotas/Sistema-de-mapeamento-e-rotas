@@ -1,10 +1,8 @@
 <div class="sidebar">
     <section id="estabelecimento" class="secao-info">
         <h2>Sobre o estabelecimento</h2>
-        <p>nome do estabelecimento</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae doloribus nostrum et reiciendis aliquam error
-            quo, cupiditate, sit quaerat totam in at exercitationem? Dicta, eaque quaerat. Itaque amet blanditiis harum?
-        </p>
+        <p>{{ estabelecimento?.nome || 'nome do estabelecimento' }}</p>
+        <p>{{ estabelecimento?.infos || 'Selecione um local válido para ver mais informações.' }}</p>
     </section>
 
     <section id="instrucoes" class="secao-passos">
